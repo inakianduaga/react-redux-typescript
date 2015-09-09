@@ -1,0 +1,5 @@
+dist
+.settings
+.idea
+typings
+node_modules

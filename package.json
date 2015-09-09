@@ -1,0 +1,36 @@
+{
+  "name": "react-typescript-boilerplate",
+  "version": "0.0.0",
+  "description": "Test boilerplate for developing ReactJS apps w/ typescript",
+  "main": "dist/app.js",
+  "author": "Inaki Anduaga",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "webpack": "^1.12.1",
+    "ts-loader" : "^0.5.4",
+    "tsd": "^0.6.4",
+    "typescript": "^1.6.0-beta"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reactjs/react-tutorial.git"
+  },
+  "keywords": [
+    "react",
+    "tutorial",
+    "comment",
+    "example"
+  ],
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "engines" : {
+    "node" : "0.12.x"
+  }
+}
