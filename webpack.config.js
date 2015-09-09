@@ -1,20 +1,33 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
-  entry: './src/app.ts',
+  entry: [
+    'webpack-dev-server/client?http://0.0.0.0:3000', // WebpackDevServer host and port
+    'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
+    './src/app.tsx',
+  ],
   output: {
-    filename: 'dist/bundle.js'
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js',
+    //publicPath: '/static/src/public/index.html'
+    publicPath: '/static/'
   },
-  devtool: 'source-map',
+  devtool: 'cheap-eval-source-map', //alt 'source-map', 'eval'
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
   ],
   module: {
     loaders: [
-      { test: /\.ts(x)?$/, loader: 'ts-loader' }
+      {
+        test: /\.ts(x)?$/,
+        loaders: ['react-hot', 'ts-loader'],
+        // include: path.join(__dirname, 'scr')
+      }
     ]
   }
 }
