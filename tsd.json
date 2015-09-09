@@ -4,5 +4,12 @@
   "ref": "master",
   "path": "typings",
   "bundle": "typings/tsd.d.ts",
-  "installed": {}
+  "installed": {
+    "react/react.d.ts": {
+      "commit": "b3aeee64552e324581fdbe0926f4a96e981e451b"
+    },
+    "node/node.d.ts": {
+      "commit": "b3aeee64552e324581fdbe0926f4a96e981e451b"
+    }
+  }
 }

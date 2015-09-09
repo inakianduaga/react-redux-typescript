@@ -1,10 +1,15 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "sourceMap": true
-  },
-  "files": [
-    "./src/app.ts",
-    "typings/tsd.d.ts"
-  ]
+    "compilerOptions": {
+        "module": "commonjs",
+        "sourceMap": true,
+        "jsx": "react"
+    },
+    "filesGlob": [
+        "./src/**/*.ts",
+        "./src/**/*.tsx"
+    ],
+    "files": [
+        "./src/app.ts",
+        "./src/components/example.tsx"
+    ]
 }
