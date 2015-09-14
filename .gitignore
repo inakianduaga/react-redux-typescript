@@ -1,5 +1,6 @@
 dist
 .settings
+.vscode
 .idea
 typings
 node_modules
