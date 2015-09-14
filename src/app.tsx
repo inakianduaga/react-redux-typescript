@@ -4,6 +4,6 @@ import React = require('react');
 import CommentBox = require('./components/CommentBox.tsx');
 
 React.render(
-  <CommentBox />,
+  <CommentBox.Component label="Label" />,
   document.getElementById('content')
 );

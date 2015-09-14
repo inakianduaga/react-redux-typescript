@@ -1,13 +1,21 @@
 import React = require('react');
 
-class CommentBox extends React.Component<any, any> {
-  render() {
-    return (
-      <div className="commentBox">
-        Hello, world! I am a Test 50.
-      </div>
-    );
+module CommentBox {
+
+  interface Props {
+    label: string
   }
-};
+
+  export class Component extends React.Component<Props, any> {
+    render() {
+      return (
+        <div className="commentBox">
+          <b>{ this.props.label }</b>: Hello, world! I am a Test 60.
+        </div>
+      );
+    }
+  };
+
+}
 
 export = CommentBox;
