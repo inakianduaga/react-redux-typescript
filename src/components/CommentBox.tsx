@@ -1,5 +1,7 @@
 import React = require('react');
 
+require('../public/stylesheets/commentBox.less');
+
 module CommentBox {
 
   interface Props {

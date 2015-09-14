@@ -10,27 +10,34 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    //publicPath: '/static/src/public/index.html'
-    publicPath: '/static/'
   },
-  devtool: 'cheap-eval-source-map', //alt 'source-map', 'eval'
+  devtool: 'source-map', //alt 'source-map', 'eval'
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        //supresses warnings, usually from module minification
+        warnings: false
+      }
+    }),
     new webpack.NoErrorsPlugin()
   ],
   module: {
+    preLoaders: [
+      {
+        test: /\.(ts|tsx)$/,
+        loader: 'tslint',
+        include: [path.resolve(__dirname, "src")],
+        exclude: [path.resolve(__dirname, 'node_modules')]
+      },
+    ],
     loaders: [
       {
         test: /\.ts(x)?$/,
-        loaders: ['react-hot', 'ts-loader'],
+        loaders: ['ts-loader'],
         // include: path.join(__dirname, 'scr')
-      },
-      {
-        test: /\.less$/,
-        loader: "style!css!less"
       }
     ]
   }
