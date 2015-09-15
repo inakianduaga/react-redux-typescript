@@ -38,6 +38,10 @@ module.exports = {
         test: /\.ts(x)?$/,
         loaders: ['ts-loader'],
         // include: path.join(__dirname, 'scr')
+      },
+      {
+        test: /\.less$/,
+        loader: "style!css!autoprefixer-loader?browsers=last 2 versions!less"
       }
     ]
   }
