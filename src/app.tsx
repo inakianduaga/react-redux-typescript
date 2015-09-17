@@ -2,9 +2,9 @@
 /// <reference path="../node_modules/immutable/dist/immutable.d.ts" />
 
 import React = require('react');
-import CommentBox = require('./components/CommentBox');
+import Layout = require('./components/layout/Layout.tsx');
 
 React.render(
-  <CommentBox.Component label="Label" />,
+  <Layout.Layout />,
   document.getElementById('content')
 );

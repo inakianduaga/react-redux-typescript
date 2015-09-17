@@ -10,8 +10,8 @@
     ],
     "files": [
         "./src/app.tsx",
-        "./src/components/CommentBox.tsx",
-        "./src/components/orders/Table.tsx"
+        "./src/components/layout/Layout.tsx",
+        "./src/components/orders/OrdersTable.tsx"
     ],
     "compileOnSave": false
 }

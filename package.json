@@ -10,7 +10,8 @@
     "react-redux": "^2.1.2",
     "material-ui" : "^0.11.0",
     "redux-react-router": "^1.0.0-beta1",
-    "immutable": "^3.7.5"
+    "immutable": "^3.7.5",
+    "casual": "^1.4.7"
   },
   "devDependencies": {
     "webpack": "^1.12.1",

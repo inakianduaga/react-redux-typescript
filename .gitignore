@@ -2,7 +2,6 @@ dist
 .settings
 .vscode
 .idea
-typings/*
-!typings/tsd.d.ts
+typings
 node_modules
 npm-debug.log

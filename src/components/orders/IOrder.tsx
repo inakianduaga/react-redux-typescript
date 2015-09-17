@@ -1,11 +1,13 @@
 module IOrder {
 
   export interface Order {
+    id: number,
     firstName: string,
     lastName: string,
     email: string,
     orderNumber: string,
     amount: number,
+    currency: string,
     taxRate: number
     shipping: Shipping,
     items: Item[],
