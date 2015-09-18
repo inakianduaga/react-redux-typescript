@@ -1,11 +1,12 @@
 import React = require('react');
 import OrdersTable = require('../orders/OrdersTable.tsx');
-// let mocker = require('casual');
+
 let materialUI = require('material-ui');
 let ThemeManager = new materialUI.Styles.ThemeManager();
-
+let orders = require('json!./../../mocks/mocks.json');
+console.log(orders);
 require('../../../node_modules/flexboxgrid/dist/flexboxgrid.css');
-//
+
 module Layout {
 
   export class Layout extends React.Component<any, any> {
@@ -20,42 +21,6 @@ module Layout {
     // Material UI pass manager context
     public static childContextTypes = {
       muiTheme: React.PropTypes.object
-    };
-
-    private generateMockOrderData(count: number) {
-      let orders = [];
-      // for (let index = 0; index < count; index++) {
-      //   orders.push({
-      //       id: mocker.integer(1, 100000),
-      //       firstName: mocker.first_name,
-      //       lastName: mocker.first_name,
-      //       email: mocker.email,
-      //       orderNumber: mocker.integer(1, 100000),
-      //       amount: mocker.integer(10, 1000),
-      //       currency: mocker.random_element(['EUR', 'USD', 'CHF']),
-      //       taxRate: mocker.integer(10, 22),
-      //       items: (() => {
-      //           return [1, 2, 3].map(() => ({
-      //               sku: mocker.word,
-      //               name: mocker.title,
-      //               quantity: mocker.integer(1, 99),
-      //               amount: mocker.integer(1, 150),
-      //         }));
-      //       })(),
-      //       shipping: {
-      //           provider: mocker.random_element(['dhl', 'fedex', 'ups']),
-      //           type: mocker.random_element(['parcel', 'express', 'overnight']),
-      //           amount: mocker.integer(1, 15),
-      //       },
-      //       discount: {
-      //           'name': mocker.word,
-      //           'amount': mocker.integer(1, 50),
-      //           'isPercent': true
-      //       }
-      //   });
-      // }
-
-      return orders;
     };
 
     private orderFields = {
@@ -86,7 +51,7 @@ module Layout {
     render() {
       return (
         <div className="row">
-          <OrdersTable.Table orders={ this.generateMockOrderData(50) } visibleFields={this.orderFields} />
+          <OrdersTable.Table orders={ orders } visibleFields={this.orderFields} />
         </div>
       );
     }

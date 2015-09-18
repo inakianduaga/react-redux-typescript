@@ -6,8 +6,8 @@ import Immutable = require('immutable');
 
 let Mui = require('material-ui/lib/table');
 
+//Stylesheets
 require('../../public/stylesheets/orders.less');
-
 
 module OrdersTable {
 
