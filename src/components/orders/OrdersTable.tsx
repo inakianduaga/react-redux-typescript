@@ -4,7 +4,7 @@ import React = require('react');
 import IOrder = require('./IOrder');
 import Immutable = require('immutable');
 
-let Mui = require('material-ui/lib/table');
+let M = require('material-ui/lib/table');
 
 //Stylesheets
 require('../../public/stylesheets/orders.less');
@@ -49,16 +49,18 @@ module OrdersTable {
 
     render() {
       return (
-        <Mui.Table
-          height={this.state.height}
-          fixedHeader={this.state.fixedHeader}
-          fixedFooter={this.state.fixedFooter}
-          selectable={this.state.selectable}
-          multiSelectable={this.state.multiSelectable}
-          >
-          <Header {...this.props.visibleFields} />
-          <Body {...this.props} />
-        </Mui.Table>
+        <div>
+          <M.Table
+            height={this.state.height}
+            fixedHeader={this.state.fixedHeader}
+            fixedFooter={this.state.fixedFooter}
+            selectable={this.state.selectable}
+            multiSelectable={this.state.multiSelectable}
+            >
+            <Header {...this.props.visibleFields} />
+            <Body {...this.props} />
+          </M.Table>
+        </div>
       );
     }
   };
@@ -66,17 +68,17 @@ module OrdersTable {
   class Header extends React.Component<Fields, any> {
     render() {
       return (
-        <Mui.TableHeader>
-          <Mui.TableRow>
+        <M.TableHeader>
+          <M.TableRow>
             {
               this.props.fields
                 .filter(field => field.enabled)
                 .map(field =>
-                  <Mui.TableHeaderColumn key={field.label}>{field.label}</Mui.TableHeaderColumn>
+                  <M.TableHeaderColumn>{field.label}</M.TableHeaderColumn>
                 )
             }
-          </Mui.TableRow>
-        </Mui.TableHeader>
+          </M.TableRow>
+        </M.TableHeader>
       );
     }
   }
@@ -84,13 +86,13 @@ module OrdersTable {
   class Body extends React.Component<TableData, any> {
     render() {
       return (
-        <Mui.TableBody>
+        <M.TableBody>
         {
           this.props.orders.map(order =>
               <Row order={Immutable.fromJS(order)} fields={Immutable.fromJS(this.props.visibleFields.fields)}  />
             )
-          }
-        </Mui.TableBody>
+        }
+        </M.TableBody>
       )
     }
   }
@@ -106,17 +108,17 @@ module OrdersTable {
 
     render() {
       return (
-        <Mui.TableRow>
+        <M.TableRow>
           {
             this.props.fields
               .filter(field => field.enabled)
               .map(field =>
-                <td key={field.label + this.props.order.id}>
+                <M.TableRowColumn>
                   { this.fieldContent[field.label] }
-                </td>
+                </M.TableRowColumn>
               )
           }
-        </Mui.TableRow>
+        </M.TableRow>
       )
     }
   }

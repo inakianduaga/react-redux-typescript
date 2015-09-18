@@ -12,7 +12,8 @@
     "immutable": "^3.7.5",
     "casual": "^1.4.7",
     "flexboxgrid": "^6.2.0",
-    "material-ui": "^0.11.1"
+    "material-ui": "^0.11.1",
+    "react-tap-event-plugin": "^0.1.7"
   },
   "devDependencies": {
     "webpack": "^1.12.1",

@@ -11,7 +11,9 @@
     "files": [
         "./src/app.tsx",
         "./src/components/layout/Layout.tsx",
-        "./src/components/orders/OrdersTable.tsx"
+        "./src/components/orders/OrdersTable.tsx",
+        "./src/components/navigation/Navigation.tsx",
+        "./src/components/navigation/LanguageSelector.tsx"
     ],
     "compileOnSave": false
 }

@@ -3,6 +3,9 @@
 
 import React = require('react');
 import Layout = require('./components/layout/Layout.tsx');
+let injectTapEventPlugin = require("react-tap-event-plugin");
+
+injectTapEventPlugin();
 
 React.render(
   <Layout.Layout />,
