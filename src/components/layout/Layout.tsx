@@ -1,11 +1,26 @@
 import React = require('react');
 import OrdersTable = require('../orders/OrdersTable.tsx');
 // let mocker = require('casual');
+let materialUI = require('material-ui');
+let ThemeManager = new materialUI.Styles.ThemeManager();
 
 require('../../../node_modules/flexboxgrid/dist/flexboxgrid.css');
 //
 module Layout {
+
   export class Layout extends React.Component<any, any> {
+
+    // Material UI pass manager context
+    public getChildContext() {
+      return {
+        muiTheme: ThemeManager.getCurrentTheme()
+      };
+    }
+
+    // Material UI pass manager context
+    public static childContextTypes = {
+      muiTheme: React.PropTypes.object
+    };
 
     private generateMockOrderData(count: number) {
       let orders = [];
@@ -76,6 +91,9 @@ module Layout {
       );
     }
   }
+
+
+
 }
 
 export = Layout;
