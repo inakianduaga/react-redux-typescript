@@ -11,7 +11,8 @@
     "material-ui" : "^0.11.0",
     "redux-react-router": "^1.0.0-beta1",
     "immutable": "^3.7.5",
-    "casual": "^1.4.7"
+    "casual": "^1.4.7",
+    "flexboxgrid": "^6.2.0"
   },
   "devDependencies": {
     "webpack": "^1.12.1",

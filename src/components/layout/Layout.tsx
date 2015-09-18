@@ -2,6 +2,8 @@ import React = require('react');
 import OrdersTable = require('../orders/OrdersTable.tsx');
 // let mocker = require('casual');
 
+require('../../../node_modules/flexboxgrid/dist/flexboxgrid.css');
+//
 module Layout {
   export class Layout extends React.Component<any, any> {
 
@@ -68,7 +70,7 @@ module Layout {
 
     render() {
       return (
-        <div>
+        <div className="row">
           <OrdersTable.Table orders={ this.generateMockOrderData(50) } visibleFields={this.orderFields} />
         </div>
       );

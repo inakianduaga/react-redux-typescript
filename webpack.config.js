@@ -31,7 +31,12 @@ module.exports = {
       {
         test: /\.less$/,
         loader: "style!css?sourceMap!less?sourceMap=true"
+      },
+      {
+        test: /\.css$/,
+        loader: "style!css?sourceMap"
       }
+
     ]
   }
 }
