@@ -11,6 +11,7 @@ let ThemeManager = new materialUI.Styles.ThemeManager();
 let orders: Immutable.List<IOrder.Order> = require('json!./../../mocks/mocks.json');
 
 require('../../../node_modules/flexboxgrid/dist/flexboxgrid.css');
+require('../../../node_modules/materialize-css/dist/css/materialize.css');
 
 const orderFields = {
     fields : [

@@ -35,6 +35,10 @@ module.exports = {
       {
         test: /\.css$/,
         loader: "style!css?sourceMap"
+      },
+      {
+        test: /\.(woff|ttf|woff2|svg|eot)$/,
+        loader: 'url?limit=100000'
       }
 
     ]

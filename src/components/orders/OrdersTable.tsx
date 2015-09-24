@@ -49,16 +49,10 @@ module OrdersTable {
 
     render() {
       return (
-        <M.Table
-          height={this.state.height}
-          fixedHeader={this.state.fixedHeader}
-          fixedFooter={this.state.fixedFooter}
-          selectable={this.state.selectable}
-          multiSelectable={this.state.multiSelectable}
-          >
+        <table>
           <Header {...this.props.visibleFields} />
           <Body {...this.props} />
-        </M.Table>
+        </table>
       );
     }
   };
@@ -66,17 +60,17 @@ module OrdersTable {
   class Header extends React.Component<Fields, any> {
     render() {
       return (
-        <M.TableHeader>
-          <M.TableRow>
+        <thead>
+          <tr>
             {
               this.props.fields
                 .filter(field => field.enabled)
                 .map(field =>
-                  <M.TableHeaderColumn>{field.label}</M.TableHeaderColumn>
+                  <th>{field.label}</th>
                 )
             }
-          </M.TableRow>
-        </M.TableHeader>
+          </tr>
+        </thead>
       );
     }
   }
@@ -84,13 +78,13 @@ module OrdersTable {
   class Body extends React.Component<TableData, any> {
     render() {
       return (
-        <M.TableBody>
+        <tbody>
         {
           this.props.orders.map(order =>
               <Row order={order} fields={this.props.visibleFields.fields}  />
             )
         }
-        </M.TableBody>
+        </tbody>
       )
     }
   }
@@ -106,17 +100,17 @@ module OrdersTable {
 
     render() {
       return (
-        <M.TableRow>
+        <tr>
           {
             this.props.fields
               .filter(field => field.enabled)
               .map(field =>
-                <M.TableRowColumn>
+                <td>
                   { this.fieldContent[field.label](this.props.order) }
-                </M.TableRowColumn>
+                </td>
               )
           }
-        </M.TableRow>
+        </tr>
       )
     }
   }
