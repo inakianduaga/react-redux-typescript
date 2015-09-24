@@ -12,7 +12,7 @@ require('../../public/stylesheets/orders.less');
 module OrdersTable {
 
   interface TableData {
-    orders: IOrder.Order[],
+    orders: Immutable.List<IOrder.Order>,
     visibleFields: Fields,
   };
 
@@ -49,18 +49,16 @@ module OrdersTable {
 
     render() {
       return (
-        <div>
-          <M.Table
-            height={this.state.height}
-            fixedHeader={this.state.fixedHeader}
-            fixedFooter={this.state.fixedFooter}
-            selectable={this.state.selectable}
-            multiSelectable={this.state.multiSelectable}
-            >
-            <Header {...this.props.visibleFields} />
-            <Body {...this.props} />
-          </M.Table>
-        </div>
+        <M.Table
+          height={this.state.height}
+          fixedHeader={this.state.fixedHeader}
+          fixedFooter={this.state.fixedFooter}
+          selectable={this.state.selectable}
+          multiSelectable={this.state.multiSelectable}
+          >
+          <Header {...this.props.visibleFields} />
+          <Body {...this.props} />
+        </M.Table>
       );
     }
   };
@@ -89,7 +87,7 @@ module OrdersTable {
         <M.TableBody>
         {
           this.props.orders.map(order =>
-              <Row order={Immutable.fromJS(order)} fields={Immutable.fromJS(this.props.visibleFields.fields)}  />
+              <Row order={order} fields={this.props.visibleFields.fields}  />
             )
         }
         </M.TableBody>
@@ -97,7 +95,7 @@ module OrdersTable {
     }
   }
 
-  class Row extends React.Component<OrderRow, any> {
+   class Row extends React.Component<OrderRow, any> {
     private fieldContent = {
       name: (order: IOrder.Order) => `${order.firstName}, ${order.lastName}`,
       email: (order: IOrder.Order) => order.email,
@@ -114,7 +112,7 @@ module OrdersTable {
               .filter(field => field.enabled)
               .map(field =>
                 <M.TableRowColumn>
-                  { this.fieldContent[field.label] }
+                  { this.fieldContent[field.label](this.props.order) }
                 </M.TableRowColumn>
               )
           }

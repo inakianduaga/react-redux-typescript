@@ -1,11 +1,14 @@
+/// <reference path="../../../node_modules/immutable/dist/immutable.d.ts" />
+
 import React = require('react');
 import OrdersTable = require('../orders/OrdersTable.tsx');
+import IOrder = require('../orders/IOrder');
 import Navigation = require('../navigation/Navigation.tsx');
 import Immutable = require('immutable');
 
 let materialUI = require('material-ui');
 let ThemeManager = new materialUI.Styles.ThemeManager();
-let orders = require('json!./../../mocks/mocks.json');
+let orders: Immutable.List<IOrder.Order> = require('json!./../../mocks/mocks.json');
 
 require('../../../node_modules/flexboxgrid/dist/flexboxgrid.css');
 
@@ -57,7 +60,7 @@ module Layout {
             <Navigation.Navigation />
           </div>
           <div className="row">
-            <OrdersTable.Table orders={ Immutable.fromJS(orders) } visibleFields={ orderFields } />
+            <OrdersTable.Table orders={ Immutable.List(orders) } visibleFields={ orderFields } />
           </div>
         </div>
       );
