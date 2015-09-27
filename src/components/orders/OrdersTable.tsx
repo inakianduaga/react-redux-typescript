@@ -49,7 +49,7 @@ module OrdersTable {
 
     render() {
       return (
-        <table>
+        <table className="striped">
           <Header {...this.props.visibleFields} />
           <Body {...this.props} />
         </table>
@@ -77,11 +77,12 @@ module OrdersTable {
 
   class Body extends React.Component<TableData, any> {
     render() {
+      let { orders, fields} = { orders: this.props.orders, fields: this.props.visibleFields.fields };
       return (
         <tbody>
         {
-          this.props.orders.map(order =>
-              <Row order={order} fields={this.props.visibleFields.fields}  />
+          orders.map(order =>
+              <Row order={ order } fields={ fields }  />
             )
         }
         </tbody>
