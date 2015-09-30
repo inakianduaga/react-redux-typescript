@@ -1,15 +1,23 @@
+import React = require('react');
 import Pagination = require('../pagination/Pagination');
 import OrderTable = require('./OrdersTable');
+import IOrder = require('./IOrder');
 
 module Orders {
 
-  export class Layout extends React.Component<any, any> {
+  type LayoutData = {
+    pagination: Pagination.PaginationData,
+    orders: OrderTable.TableData,
+  };
+
+  export class Layout extends React.Component<LayoutData, any> {
 
     render() {
+      let {pagination, orders} = this.props;
       return (
         <div>
-          <Pagination {...this.props} />
-          <OrderTable />
+          <Pagination.Pagination {...pagination} />
+          <OrderTable.Table {...orders}/>
         </div>
 
       );

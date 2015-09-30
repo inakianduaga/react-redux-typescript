@@ -11,7 +11,7 @@ require('../../public/stylesheets/orders.less');
 
 module OrdersTable {
 
-  interface TableData {
+  export interface TableData {
     orders: Immutable.List<IOrder.Order>,
     visibleFields: Fields,
   };

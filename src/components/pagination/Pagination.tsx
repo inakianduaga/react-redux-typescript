@@ -2,6 +2,8 @@
 /// <reference path="../../../node_modules/immutable/dist/immutable.d.ts" />
 import React = require('react');
 import Immutable = require('immutable');
+import FrameworkType = require("../../types/FrameworkTypes");
+import PaginationActions = require('./Actions');
 
 //Stylesheets
 require('../../public/stylesheets/pagination.less');
@@ -15,7 +17,24 @@ module Pagination {
     edges: number
     selectHandler: Function,
     class?: string
+  };
+
+  interface SelectPage extends FrameworkType.Action {
+    payload: {
+      page: number
+    }
   }
+
+  export class Actions {
+    page(page: number): SelectPage {
+      return {
+        type: PaginationActions.PAGINATION_SELECT_PAGE,
+        payload: {
+          'page': page
+        }
+      }
+    };
+  };
 
   export class Pagination extends React.Component<PaginationData, any> {
 
