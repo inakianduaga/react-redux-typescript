@@ -4,7 +4,7 @@ module FrameworkTypes {
    * Redux standard action
    * @link https://github.com/kolodny/redux-standard-action
    */
-  export type Action = {
+  export interface Action {
     type: string,
     payload?: any,
     error?: boolean,

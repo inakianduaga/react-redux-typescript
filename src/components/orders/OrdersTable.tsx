@@ -24,7 +24,7 @@ module OrdersTable {
     enabled: boolean,
   };
 
-  interface Fields {
+  export interface Fields {
     fields: Field[]
   };
 
