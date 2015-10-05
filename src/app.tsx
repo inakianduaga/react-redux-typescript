@@ -3,7 +3,7 @@
 
 import React = require('react');
 import { createStore, compose, combineReducers } from 'redux';
-import rootReducer = require('./reducers/index');
+import rootReducer from './reducers/index';
 let { Route, Link } = require('react-router');
 let {Provider, connect} = require('react-redux');
 let {ReduxRouter, routerStateReducer, reduxReactRouter} = require('redux-react-router');

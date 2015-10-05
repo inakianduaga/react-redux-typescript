@@ -56,11 +56,10 @@ module State {
     // return Object.assign({}, state, { ordersPaginated: newPaginatedOrders });
   };
 
-  export function reducer(state: IDefaultState, action: StandardAction) {
+  export function reducer(state: IDefaultState = defaultState, action: StandardAction) {
     switch (action.type) {
       case PAGINATION_SELECT_PAGE:
         return this.paginator(state, <ISelectPageAction>action)
-
       default:
         return state;
     }
