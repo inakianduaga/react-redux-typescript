@@ -10,6 +10,7 @@ module FrameworkTypes {
     error?: boolean,
     meta?: string
   }
+
 }
 
 export = FrameworkTypes;

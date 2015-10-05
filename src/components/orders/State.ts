@@ -1,9 +1,9 @@
-/// <reference path="../../../typings/tsd.d.ts" />
 import Immutable = require('immutable');
 import IOrder = require('./IOrder');
 import OrderTable = require('./OrdersTable');
 import Pagination = require('../pagination/Pagination');
-import PaginationActions = require('../pagination/Actions');
+import {PAGINATION_SELECT_PAGE, SelectPage as ISelectPageAction} from '../pagination/Actions';
+import {Action as StandardAction} from '../../types/FrameworkTypes';
 
 module State {
 
@@ -48,16 +48,23 @@ module State {
     ordersPaginated: require('json!./../../mocks/mocks.json'),
   };
 
-  class reducers {
+  function paginator(state: IDefaultState = defaultState, action: ISelectPageAction) {
+    const selectedPage = action.payload.page;
+    const newPaginatedOrders = state.orders.slice((selectedPage - 1) * state.pagination.perPage, selectedPage * state.pagination.perPage);
 
-    paginator(state: IDefaultState = defaultState, action: PaginationActions.SelectPage) {
-      const selectedPage = action.payload.page;
-      const newPaginatedOrders = state.orders.slice((selectedPage - 1) * state.pagination.perPage, selectedPage * state.pagination.perPage);
-
-      return Object.assign({}, state, { ordersPaginated: newPaginatedOrders });
-    }
-
+    return Immutable.Map(state).set('ordersPaginated', newPaginatedOrders).toObject();
+    // return Object.assign({}, state, { ordersPaginated: newPaginatedOrders });
   };
 
+  export function reducer(state: IDefaultState, action: StandardAction) {
+    switch (action.type) {
+      case PAGINATION_SELECT_PAGE:
+        return this.paginator(state, <ISelectPageAction>action)
 
+      default:
+        return state;
+    }
+  };
 }
+
+export = State;

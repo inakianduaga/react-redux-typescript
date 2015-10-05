@@ -50,9 +50,9 @@ module Layout {
     }
 
     // Material UI pass manager context
-    public static childContextTypes = {
-      muiTheme: React.PropTypes.object
-    };
+    // public static childContextTypes = {
+    //   muiTheme: React.PropTypes.object
+    // };
 
     render() {
       return (

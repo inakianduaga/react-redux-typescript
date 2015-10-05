@@ -2,7 +2,8 @@
     "compilerOptions": {
         "module": "commonjs",
         "sourceMap": true,
-        "jsx": "react"
+        "jsx": "react",
+        "target": "ES5"
     },
     "filesGlob": [
         "./src/**/*.ts",
@@ -16,7 +17,7 @@
         "./src/components/orders/OrdersTable.tsx",
         "./src/components/orders/IOrder.tsx",
         "./src/components/orders/Orders.tsx",
-        "./src/components/pagination/Actions.tsx",
+        "./src/components/pagination/Actions.ts",
         "./src/components/pagination/Pagination.tsx",
         "./src/types/FrameworkTypes.tsx"
     ],
