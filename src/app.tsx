@@ -11,7 +11,7 @@ let { devTools } = require('redux-devtools');
 let { DevTools, DebugPanel, LogMonitor } = require('redux-devtools/lib/react');
 let createHistory = require('history/lib/createBrowserHistory');
 
-import Layout = require('./components/layout/Layout.tsx');
+import Layout from './components/layout/Layout.tsx';
 let injectTapEventPlugin = require("react-tap-event-plugin");
 
 injectTapEventPlugin();
@@ -32,9 +32,9 @@ class Root extends React.Component<any, any> {
         <Provider store={store}>
           { () =>
             <ReduxRouter>
-              <Route path="/src/public/index.html" component={Layout.Layout} module="home" />
-              <Route path="/" component={Layout.Layout} module="home" >
-                <Route path="orders" component={Layout.Layout} module="orders" />
+              <Route path="/src/public/index.html" component={Layout} module="home" />
+              <Route path="/" component={Layout} module="home" >
+                <Route path="orders" component={Layout} module="orders" />
               </Route>
             </ReduxRouter>
           }

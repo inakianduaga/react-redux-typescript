@@ -11,6 +11,13 @@ module FrameworkTypes {
     meta?: string
   }
 
+  /**
+   * Properties/Methods available on a Redux-store connected component
+   */
+  export interface ReduxConnectedComponent {
+    dispatch: Function
+  };
+
 }
 
 export = FrameworkTypes;

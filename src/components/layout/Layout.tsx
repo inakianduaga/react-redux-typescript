@@ -1,46 +1,26 @@
 /// <reference path="../../../node_modules/immutable/dist/immutable.d.ts" />
-
 import React = require('react');
 import OrdersTable = require('../orders/OrdersTable.tsx');
 import IOrder = require('../orders/IOrder');
+import { ReduxConnectedComponent } from '../../types/FrameworkTypes';
+import { IDefaultState as IOrdersState } from '../orders/State';
 import Navigation = require('../navigation/Navigation.tsx');
 import Immutable = require('immutable');
 
+let { connect } = require('react-redux');
 let materialUI = require('material-ui');
 let ThemeManager = new materialUI.Styles.ThemeManager();
-let orders: Immutable.List<IOrder.Order> = require('json!./../../mocks/mocks.json');
 
 require('../../../node_modules/flexboxgrid/dist/flexboxgrid.css');
 require('../../../node_modules/materialize-css/dist/css/materialize.css');
 
-const orderFields = {
-    fields : [
-      {
-          label: "name",
-          enabled: true
-      },
-      {
-          label: "email",
-          enabled: true
-      },
-      {
-          label: "orderNumber",
-          enabled: true
-      },
-      {
-          label: "amount",
-          enabled: true
-      },
-      {
-          label: "taxRate",
-          enabled: true
-      },
-    ]
-};
-
 module Layout {
 
-  export class Layout extends React.Component<any, any> {
+  interface ILayoutProps extends ReduxConnectedComponent {
+    orders: IOrdersState
+  }
+
+  export class Main extends React.Component<ILayoutProps, any> {
 
     // Material UI pass manager context
     public getChildContext() {
@@ -55,21 +35,33 @@ module Layout {
     };
 
     render() {
+      const { dispatch, orders } = this.props;
+      const { ordersPaginated, orderFields } = orders;
+
       return (
         <div>
           <div className="row">
             <Navigation.Navigation />
           </div>
           <div className="row">
-            <OrdersTable.Table orders={ Immutable.List(orders) } visibleFields={ orderFields } />
+            <OrdersTable.Table orders={ Immutable.List(ordersPaginated) } visibleFields={ orderFields } />
           </div>
         </div>
       );
     }
+
+    /**
+     * Which props do we want to inject, given the global state?
+     * Note: use https://github.com/faassen/reselect for better performance.
+     */
+    public static selectState(state: any) {
+      return {
+        orders: state.orders
+      };
+    }
+
   }
-
-
 
 }
 
-export = Layout;
+export default connect(Layout.Main.selectState)(Layout.Main);

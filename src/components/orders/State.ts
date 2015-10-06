@@ -7,7 +7,7 @@ import {Action as StandardAction} from '../../types/FrameworkTypes';
 
 module State {
 
-  interface IDefaultState {
+  export interface IDefaultState {
     orderFields: OrderTable.Fields,
     orders: Immutable.List<IOrder.Order>,
     pagination: Pagination.PaginationOptions,
@@ -60,6 +60,7 @@ module State {
     switch (action.type) {
       case PAGINATION_SELECT_PAGE:
         return this.paginator(state, <ISelectPageAction>action)
+
       default:
         return state;
     }
