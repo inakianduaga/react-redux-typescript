@@ -4,18 +4,20 @@ module Actions {
 
   export const PAGINATION_SELECT_PAGE: string = 'PAGINATION_SELECT_PAGE';
 
-  export interface SelectPage extends FrameworkType.Action {
+  export interface ISelectPage extends FrameworkType.Action {
     payload: {
-      page: number
+      page: number,
+      module: string
     }
   }
 
   export class Actions {
-    page(page: number): SelectPage {
+    static page(page: number, module: string): ISelectPage {
       return {
         type: PAGINATION_SELECT_PAGE,
         payload: {
-          'page': page
+          page,
+          module
         }
       }
     };

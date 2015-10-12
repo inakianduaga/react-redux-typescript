@@ -23,7 +23,7 @@ module Pagination {
 
   export class Pagination extends React.Component<PaginationData, any> {
 
-    private maxInsidePages = 5;
+    private maxInsidePages = 3;
 
     private generatePageRange(total: number, perPage: number, current: number) {
       //ES6 syntax
