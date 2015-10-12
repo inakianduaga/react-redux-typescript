@@ -13,7 +13,6 @@ module State {
     orderFields: OrderTable.Fields,
     orders: Immutable.List<IOrder.Order>,
     pagination: Pagination.PaginationOptions,
-    ordersPaginated: Immutable.List<IOrder.Order>,
   }
 
   const defaultState: IDefaultState = {
@@ -46,16 +45,15 @@ module State {
       perPage: 7,
       current: 1,
       edges: 2
-    },
-    ordersPaginated: orders,
+    }
   };
 
   function paginator(state: IDefaultState = defaultState, action: ISelectPageAction) {
     const selectedPage = action.payload.page;
     const newPaginatedOrders = state.orders.slice((selectedPage - 1) * state.pagination.perPage, selectedPage * state.pagination.perPage);
-    
+
     return Immutable.Map(state)
-      .set('ordersPaginated', newPaginatedOrders)
+      // .set('ordersPaginated', newPaginatedOrders)
       // .setIn(['pagination', 'current'], selectedPage)
       .updateIn(['pagination'], x => { x.current = selectedPage; return x; })
       .toObject();
