@@ -5,7 +5,7 @@ import Immutable = require('immutable');
 import FrameworkType = require("../../types/FrameworkTypes");
 
 //Stylesheets
-require('../../public/stylesheets/pagination.less');
+require('./../../public/stylesheets/pagination.less');
 
 module Pagination {
 
@@ -23,38 +23,74 @@ module Pagination {
 
   export class Pagination extends React.Component<PaginationData, any> {
 
-    generateList(total: number, perPage: number, current: number) {
-      return Array(total).map((value: any, index: number) => index);
+    private maxInsidePages = 5;
+
+    private generatePageRange(total: number, perPage: number, current: number) {
+      //ES6 syntax
+      // return Array.from(Array(this.calculateTotalPages(total, perPage)).keys());
+      let range: number[] = [];
+
+      for (let i = 1; i <= this.calculateTotalPages(total, perPage); i++) {
+        range.push(i);
+      }
+
+      return range;
     }
 
-    calculateTotalPages(total: number, perPage: number ): number {
+    private calculateTotalPages(total: number, perPage: number ): number {
       return Math.ceil(total / perPage);
     }
 
-    truncateList(list: Array<number>, edges: number): Array<number> {
-      let truncate = list.length - 2 * edges;
-
-      return truncate > 0 ? list.splice(edges + 1, truncate) : list;
-    }
+    private truncate(pages: number[], currentPage: number, edges: number, insidePages: number) {
+      return pages.filter(page =>
+        page <= edges || page > (pages.length - edges) || Math.abs(page - currentPage) <= Math.floor(insidePages / 2)
+      );
+    };
 
     render() {
-
-      let pages = this.truncateList(this.generateList(this.props.total, this.props.perPage, this.props.current), this.props.edges);
-      let breakpointCounter: number = 0;
+      const completePageRange = this.generatePageRange(this.props.total, this.props.perPage, this.props.current);
+      let truncatedPages = this.truncate(completePageRange, this.props.current, this.props.edges, this.maxInsidePages);
 
       return (
         <ul className='paginator'>
         {
-          pages.map(page => {
-            return (page > breakpointCounter + 1) ?
-              <li className="separator">...</li> :
-              <li onClick={this.props.selectHandler.bind(this, page) }>{ page }</li>
+        truncatedPages.map((page, position, pages) => {
+            return (typeof pages[position - 1] !== 'undefined') && Math.abs(page - pages[position - 1]) > 1 ?
+              <div className="inline">
+                <Separator />
+                <PaginationButton onClick={this.props.selectHandler } current={ this.props.current == page } page={page} />
+              </div> :
+              <PaginationButton onClick={this.props.selectHandler } current={ this.props.current == page } page={page} />
+
           })
         }
         </ul>
       );
     }
   };
+
+  class Separator extends React.Component<any, any> {
+    render() {
+      return (
+        <li className="separator">...</li>
+      );
+    }
+  }
+
+  interface PaginationButtonInterface {
+    page: number,
+    current: boolean,
+    onClick: Function
+  }
+
+  class PaginationButton extends React.Component<PaginationButtonInterface, any> {
+    render() {
+      return (
+        <li onClick={this.props.onClick.bind(this, this.props.page) } className={ this.props.current ? 'current' : '' }>{ this.props.page }</li>
+      );
+    }
+  }
+
 
 }
 

@@ -1,23 +1,20 @@
 /// <reference path="../../../node_modules/immutable/dist/immutable.d.ts" />
 import React = require('react');
-import OrdersTable = require('../orders/OrdersTable.tsx');
-import IOrder = require('../orders/IOrder');
 import { ReduxConnectedComponent } from '../../types/FrameworkTypes';
-import { IDefaultState as IOrdersState } from '../orders/State';
-import Navigation = require('../navigation/Navigation.tsx');
-import Immutable = require('immutable');
-
 let { connect } = require('react-redux');
+//Different components
+import Navigation = require('../navigation/Navigation.tsx');
+import OrdersLayout from './../orders/Orders.tsx';
+//Material UI
 let materialUI = require('material-ui');
 let ThemeManager = new materialUI.Styles.ThemeManager();
-
+//Flexbox & CSS
 require('../../../node_modules/flexboxgrid/dist/flexboxgrid.css');
 require('../../../node_modules/materialize-css/dist/css/materialize.css');
 
 module Layout {
 
   interface ILayoutProps extends ReduxConnectedComponent {
-    orders: IOrdersState
   }
 
   export class Main extends React.Component<ILayoutProps, any> {
@@ -35,17 +32,13 @@ module Layout {
     };
 
     render() {
-      const { dispatch, orders } = this.props;
-      const { ordersPaginated, orderFields } = orders;
 
       return (
-        <div>
+        <div className="col-xs-offset-3">
           <div className="row">
             <Navigation.Navigation />
           </div>
-          <div className="row">
-            <OrdersTable.Table orders={ Immutable.List(ordersPaginated) } visibleFields={ orderFields } />
-          </div>
+          <OrdersLayout />
         </div>
       );
     }
@@ -56,7 +49,7 @@ module Layout {
      */
     public static selectState(state: any) {
       return {
-        orders: state.orders
+        // orders: state.orders
       };
     }
 

@@ -1,0 +1,27 @@
+.paginator {
+  @color: #3366FF;
+
+  .inline {
+    display: inline-block;
+  }
+
+  li {
+    display: inline-block;
+    padding: 0.45em 0.65em;
+    color: @color;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+    cursor: pointer;
+
+    &.current {
+      background-color: @color;
+      color: white;
+      cursor: default
+    }
+
+    &.separator {
+      cursor: default;
+    }
+
+  }
+}

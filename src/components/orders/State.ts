@@ -7,6 +7,8 @@ import {Action as StandardAction} from '../../types/FrameworkTypes';
 
 module State {
 
+  let orders = Immutable.List(<IOrder.Order[]> require('json!./../../mocks/mocks.json'));
+
   export interface IDefaultState {
     orderFields: OrderTable.Fields,
     orders: Immutable.List<IOrder.Order>,
@@ -39,13 +41,13 @@ module State {
         },
       ]
     },
-    orders: require('json!./../../mocks/mocks.json'),
+    orders: orders,
     pagination: {
-      perPage: 20,
+      perPage: 7,
       current: 1,
       edges: 2
     },
-    ordersPaginated: require('json!./../../mocks/mocks.json'),
+    ordersPaginated: orders,
   };
 
   function paginator(state: IDefaultState = defaultState, action: ISelectPageAction) {
