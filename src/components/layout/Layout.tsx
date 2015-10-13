@@ -3,7 +3,7 @@ import React = require('react');
 import { ReduxConnectedComponent } from '../../types/FrameworkTypes';
 let { connect } = require('react-redux');
 //Different components
-import Navigation = require('../navigation/Navigation.tsx');
+import Navigation from '../navigation/Navigation.tsx';
 import OrdersLayout from './../orders/Orders.tsx';
 //Material UI
 let materialUI = require('material-ui');
@@ -36,7 +36,7 @@ module Layout {
       return (
         <div className="col-xs-offset-3">
           <div className="row">
-            <Navigation.Navigation />
+            <Navigation />
           </div>
           <OrdersLayout />
         </div>

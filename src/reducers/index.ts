@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import {reducer as orders} from './../components/orders/State';
-import {reducer as language} from './../components/languageSelector/State';
+import {reducer as languages} from './../components/languageSelector/State';
 let {ReduxRouter, routerStateReducer, reduxReactRouter} = require('redux-react-router');
 
 /**
@@ -9,6 +9,7 @@ let {ReduxRouter, routerStateReducer, reduxReactRouter} = require('redux-react-r
  */
 const rootReducer = combineReducers({
   orders,
+  languages,
   router: routerStateReducer
 });
 
