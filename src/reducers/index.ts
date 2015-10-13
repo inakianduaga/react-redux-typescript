@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import {reducer as orders} from './../components/orders/State';
+import {reducer as language} from './../components/languageSelector/State';
 let {ReduxRouter, routerStateReducer, reduxReactRouter} = require('redux-react-router');
 
 /**

@@ -1,8 +1,6 @@
 import React = require('react');
-import LanguageSelector = require('./LanguageSelector.tsx');
-
+import LanguageSelector = require('../languageSelector/LanguageSelector.tsx');
 let M = require('material-ui/lib/toolbar');
-
 
 module Navigation {
   export class Navigation extends React.Component<any, any> {

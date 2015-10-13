@@ -13,7 +13,8 @@
     "files": [
         "./src/app.tsx",
         "./src/components/layout/Layout.tsx",
-        "./src/components/navigation/LanguageSelector.tsx",
+        "./src/components/languageSelector/LanguageSelector.tsx",
+        "./src/components/languageSelector/State.ts",
         "./src/components/navigation/Navigation.tsx",
         "./src/components/orders/OrdersTable.tsx",
         "./src/components/orders/IOrder.tsx",
