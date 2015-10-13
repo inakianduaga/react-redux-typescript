@@ -19,11 +19,9 @@ module Orders {
 
     private static component = 'orders';
 
-    private selectHandler(dispatch: Function) {
-      return function(page: number) {
-        dispatch(PaginationActions.page(page, Layout.component));
-      }
-    };
+    private selectHandler = (page: number) => {
+      this.props.dispatch(PaginationActions.page(page, Layout.component));
+    }
 
     private ordersPaginated(orders: Immutable.List<IOrder.Order>, selectedPage: number, perPage: number): any {
       return orders.slice((selectedPage - 1) * perPage, selectedPage * perPage);
@@ -35,7 +33,7 @@ module Orders {
       const total = this.props.orders.orders.size;
       return (
         <div className="row">
-          <Pagination.Pagination {...pagination} selectHandler={this.selectHandler(dispatch)} total={ total } class='orders'/>
+          <Pagination.Pagination {...pagination} selectHandler={this.selectHandler} total={ total } class='orders'/>
           <OrderTable.Table orders={ this.ordersPaginated(this.props.orders.orders, pagination.current, pagination.perPage) } visibleFields={ orderFields } />
         </div>
 
