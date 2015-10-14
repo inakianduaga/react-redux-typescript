@@ -3,6 +3,7 @@ import IOrder = require('./IOrder');
 import OrderTable = require('./OrdersTable');
 import Pagination = require('../pagination/Pagination');
 import {PAGINATION_SELECT_PAGE, ISelectPage as ISelectPageAction} from '../pagination/Actions';
+import {SEARCH_ORDERS, ISearchOrders } from './Actions';
 import {Action as StandardAction} from '../../types/FrameworkTypes';
 
 module State {
@@ -13,6 +14,7 @@ module State {
     orderFields: OrderTable.Fields,
     orders: Immutable.List<IOrder.Order>,
     pagination: Pagination.PaginationOptions,
+    search: string
   }
 
   const defaultState: IDefaultState = {
@@ -45,7 +47,8 @@ module State {
       perPage: 7,
       current: 1,
       edges: 2
-    }
+    },
+    search: null
   };
 
   function paginator(state: IDefaultState = defaultState, action: ISelectPageAction) {
@@ -60,13 +63,18 @@ module State {
     // return Object.assign({}, state, { ordersPaginated: newPaginatedOrders });
   };
 
-  export function reducer(state: IDefaultState = defaultState, action: StandardAction) {
+  function search(state: IDefaultState, action: ISearchOrders) {
+    return Immutable.Map(state)
+      .update('search', x => action.payload.input)
+      .toObject();
+  }
 
+  export function reducer(state: IDefaultState = defaultState, action: StandardAction) {
     switch (action.type) {
       case PAGINATION_SELECT_PAGE:
-        console.log(paginator(state, <ISelectPageAction>action));
         return action.payload.module === 'orders' ? paginator(state, <ISelectPageAction>action) : state;
-
+      case SEARCH_ORDERS:
+        return search(state, <ISearchOrders> action);
       default:
         return state;
     }

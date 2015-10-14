@@ -1,6 +1,7 @@
 import React = require('react');
 import Pagination = require('../pagination/Pagination.tsx');
 import { Actions as PaginationActions } from '../pagination/Actions';
+import { Actions as OrderActions } from './Actions.ts';
 import { ReduxConnectedComponent } from '../../types/FrameworkTypes';
 let { connect } = require('react-redux');
 import Immutable = require('immutable');
@@ -9,7 +10,7 @@ import { IDefaultState as IOrdersState } from '../orders/State';
 import IOrder = require('./IOrder');
 import { Languages as Translations } from './lang/Lang';
 import { ILanguage as ITranslation} from './lang/ILang';
-
+import { Layout as Search } from './Search.tsx';
 
 module Orders {
 
@@ -25,7 +26,7 @@ module Orders {
   export class Title extends React.Component<TitleData, any> {
     render() {
       return (
-        <h3>{ this.props.title }</h3>
+        <h4>{ this.props.title }</h4>
       )
     }
   }
@@ -42,6 +43,10 @@ module Orders {
       return orders.slice((selectedPage - 1) * perPage, selectedPage * perPage);
     }
 
+    private searchHandler = (input: string) => {
+      this.props.dispatch(OrderActions.search(input));
+    }
+
     render() {
       const { dispatch } = this.props;
       const { orderFields, pagination } = this.props.orders;
@@ -49,6 +54,7 @@ module Orders {
       return (
         <div className="row orders">
           <Title title={this.props.translations.title} />
+          <Search onChange= { this.searchHandler }/>
           <Pagination.Pagination {...pagination} selectHandler={this.selectHandler} total={ total } class='orders'/>
           <OrderTable.Table orders={ this.ordersPaginated(this.props.orders.orders, pagination.current, pagination.perPage) } translations={ this.props.translations } visibleFields={ orderFields } />
         </div>

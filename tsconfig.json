@@ -18,6 +18,7 @@
         "./src/components/navigation/Navigation.tsx",
         "./src/components/orders/OrdersTable.tsx",
         "./src/components/orders/IOrder.tsx",
+        "./src/components/orders/Search.tsx",
         "./src/components/orders/Orders.tsx",
         "./src/components/orders/lang/Lang.ts",
         "./src/components/orders/lang/ILang.ts",
