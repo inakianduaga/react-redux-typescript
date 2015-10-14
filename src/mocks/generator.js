@@ -40,4 +40,4 @@ function generateMockOrderData(count) {
   return orders;
 };
 
-fs.writeFileSync(path.join(__dirname, 'mocks.json'), JSON.stringify(generateMockOrderData(100), null, '\t'));
+fs.writeFileSync(path.join(__dirname, 'mocks.json'), JSON.stringify(generateMockOrderData(500), null, '\t'));
