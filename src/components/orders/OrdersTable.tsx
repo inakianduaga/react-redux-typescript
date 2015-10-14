@@ -3,7 +3,7 @@
 import React = require('react');
 import IOrder = require('./IOrder');
 import Immutable = require('immutable');
-import { ILanguage as IOrderLanguage } from './lang/Lang';
+import { ILanguage as IOrderLanguage } from './lang/ILang';
 
 let M = require('material-ui/lib/table');
 
@@ -17,6 +17,11 @@ module OrdersTable {
     visibleFields: Fields,
     translations: IOrderLanguage
   };
+
+  export interface HeaderData {
+    fields: Field[],
+    translations: IOrderLanguage
+  }
 
   interface Field {
     label: string,
@@ -52,14 +57,14 @@ module OrdersTable {
     render() {
       return (
         <table className="striped">
-          <Header {...this.props.visibleFields} />
+          <Header {...this.props.visibleFields} translations={ this.props.translations } />
           <Body {...this.props} />
         </table>
       );
     }
   };
 
-  class Header extends React.Component<Fields, any> {
+  class Header extends React.Component<HeaderData, any> {
     render() {
       return (
         <thead>
@@ -68,7 +73,7 @@ module OrdersTable {
               this.props.fields
                 .filter(field => field.enabled)
                 .map(field =>
-                  <th>{field.label}</th>
+                  <th>{this.props.translations.table.fields[field.label]}</th>
                 )
             }
           </tr>

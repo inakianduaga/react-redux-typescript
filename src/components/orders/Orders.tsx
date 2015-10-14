@@ -7,7 +7,8 @@ import Immutable = require('immutable');
 import OrderTable = require('./OrdersTable.tsx');
 import { IDefaultState as IOrdersState } from '../orders/State';
 import IOrder = require('./IOrder');
-import { Languages as Translations, ILanguage as ITranslation } from './lang/Lang';
+import { Languages as Translations } from './lang/Lang';
+import { ILanguage as ITranslation} from './lang/ILang';
 
 
 module Orders {

@@ -19,6 +19,11 @@
         "./src/components/orders/OrdersTable.tsx",
         "./src/components/orders/IOrder.tsx",
         "./src/components/orders/Orders.tsx",
+        "./src/components/orders/lang/Lang.ts",
+        "./src/components/orders/lang/ILang.ts",
+        "./src/components/orders/lang/de/Lang.ts",
+        "./src/components/orders/lang/es/Lang.ts",
+        "./src/components/orders/lang/en/Lang.ts",
         "./src/components/pagination/Actions.ts",
         "./src/components/pagination/Pagination.tsx",
         "./src/types/FrameworkTypes.tsx"

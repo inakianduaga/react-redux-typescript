@@ -1,4 +1,4 @@
-import { ILanguage } from './../Lang';
+import { ILanguage } from './../ILang';
 
 const lang: ILanguage = {
     table: {
