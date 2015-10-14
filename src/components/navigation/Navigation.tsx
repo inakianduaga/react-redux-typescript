@@ -9,7 +9,7 @@ module Navigation {
 
   export class Navigation extends React.Component<ReduxConnectedComponent, any> {
 
-    handleSelection =  (e: any, selectIndex: number, menuItem: LanguageItem) => {
+    private handleSelection =  (e: any, selectIndex: number, menuItem: LanguageItem) => {
       this.props.dispatch(LanguageActions.selectLanguage(menuItem.payload)) ;
     };
 

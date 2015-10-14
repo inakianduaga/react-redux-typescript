@@ -7,12 +7,14 @@ import Immutable = require('immutable');
 import OrderTable = require('./OrdersTable.tsx');
 import { IDefaultState as IOrdersState } from '../orders/State';
 import IOrder = require('./IOrder');
+import { Languages as Translations, ILanguage as ITranslation } from './lang/Lang';
 
 
 module Orders {
 
   interface LayoutData extends ReduxConnectedComponent {
     orders: IOrdersState;
+    translations: ITranslation
   };
 
   export class Layout extends React.Component<LayoutData, any> {
@@ -34,7 +36,7 @@ module Orders {
       return (
         <div className="row">
           <Pagination.Pagination {...pagination} selectHandler={this.selectHandler} total={ total } class='orders'/>
-          <OrderTable.Table orders={ this.ordersPaginated(this.props.orders.orders, pagination.current, pagination.perPage) } visibleFields={ orderFields } />
+          <OrderTable.Table orders={ this.ordersPaginated(this.props.orders.orders, pagination.current, pagination.perPage) } translations={ this.props.translations } visibleFields={ orderFields } />
         </div>
 
       );
@@ -46,7 +48,8 @@ module Orders {
      */
     public static selectState(state: any) {
       return {
-        orders: state.orders
+        orders: state.orders,
+        translations: Translations[state.languages.language]
       };
     }
   };

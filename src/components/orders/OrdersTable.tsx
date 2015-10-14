@@ -3,6 +3,7 @@
 import React = require('react');
 import IOrder = require('./IOrder');
 import Immutable = require('immutable');
+import { ILanguage as IOrderLanguage } from './lang/Lang';
 
 let M = require('material-ui/lib/table');
 
@@ -14,6 +15,7 @@ module OrdersTable {
   export interface TableData {
     orders: Immutable.List<IOrder.Order>,
     visibleFields: Fields,
+    translations: IOrderLanguage
   };
 
   interface Field {
