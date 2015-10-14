@@ -18,6 +18,18 @@ module Orders {
     translations: ITranslation
   };
 
+  type TitleData = {
+    title: string
+  }
+
+  export class Title extends React.Component<TitleData, any> {
+    render() {
+      return (
+        <h3>{ this.props.title }</h3>
+      )
+    }
+  }
+
   export class Layout extends React.Component<LayoutData, any> {
 
     private static component = 'orders';
@@ -35,7 +47,8 @@ module Orders {
       const { orderFields, pagination } = this.props.orders;
       const total = this.props.orders.orders.size;
       return (
-        <div className="row">
+        <div className="row orders">
+          <Title title={this.props.translations.title} />
           <Pagination.Pagination {...pagination} selectHandler={this.selectHandler} total={ total } class='orders'/>
           <OrderTable.Table orders={ this.ordersPaginated(this.props.orders.orders, pagination.current, pagination.perPage) } translations={ this.props.translations } visibleFields={ orderFields } />
         </div>

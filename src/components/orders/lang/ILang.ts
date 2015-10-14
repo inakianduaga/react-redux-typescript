@@ -9,7 +9,8 @@ module ILang {
         amount: string,
         taxRate: string,
       }
-    }
+    },
+    title: string
   };
 
   export type ILanguages = {
