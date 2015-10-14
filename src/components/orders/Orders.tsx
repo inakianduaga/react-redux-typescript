@@ -54,7 +54,7 @@ module Orders {
       return (
         <div className="row orders">
           <Title title={this.props.translations.title} />
-          <Search onChange= { this.searchHandler }/>
+          <Search onChange= { this.searchHandler } value={ this.props.orders.search }/>
           <Pagination.Pagination {...pagination} selectHandler={this.selectHandler} total={ total } class='orders'/>
           <OrderTable.Table orders={ this.ordersPaginated(this.props.orders.orders, pagination.current, pagination.perPage) } translations={ this.props.translations } visibleFields={ orderFields } />
         </div>
