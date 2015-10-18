@@ -35,11 +35,21 @@ module Orders {
 
     private static component = 'orders';
 
+    private static cutoffSearchLength = 2;
+
     private selectHandler = (page: number) => {
       this.props.dispatch(PaginationActions.page(page, Layout.component));
     }
 
-    private ordersPaginated(orders: Immutable.List<IOrder.Order>, selectedPage: number, perPage: number): any {
+    private static ordersSearchFiltered(orders: Immutable.List<IOrder.Order>, search: string)  {
+      return search.trim().length <= Layout.cutoffSearchLength ? orders : orders.filter(order => Layout.doesOrderContainSearch(order, search));
+    }
+
+    private static doesOrderContainSearch(order: IOrder.Order, search: string): boolean {
+      return JSON.stringify(order).indexOf(search) !== -1;
+    }
+
+    private ordersPaginated(orders: Immutable.Iterable<number, IOrder.Order>, selectedPage: number, perPage: number): any {
       return orders.slice((selectedPage - 1) * perPage, selectedPage * perPage);
     }
 
@@ -51,12 +61,13 @@ module Orders {
       const { dispatch } = this.props;
       const { orderFields, pagination } = this.props.orders;
       const total = this.props.orders.orders.size;
+      const ordersSearchFiltered = Layout.ordersSearchFiltered(this.props.orders.orders, this.props.orders.search);
       return (
         <div className="row orders">
           <Title title={this.props.translations.title} />
           <Search onChange= { this.searchHandler } value={ this.props.orders.search }/>
           <Pagination.Pagination {...pagination} selectHandler={this.selectHandler} total={ total } class='orders'/>
-          <OrderTable.Table orders={ this.ordersPaginated(this.props.orders.orders, pagination.current, pagination.perPage) } translations={ this.props.translations } visibleFields={ orderFields } />
+          <OrderTable.Table orders={ this.ordersPaginated(ordersSearchFiltered, pagination.current, pagination.perPage) } translations={ this.props.translations } visibleFields={ orderFields } />
         </div>
 
       );

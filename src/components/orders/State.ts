@@ -51,16 +51,11 @@ module State {
     search: null
   };
 
-  function paginator(state: IDefaultState = defaultState, action: ISelectPageAction) {
-    const selectedPage = action.payload.page;
-    const newPaginatedOrders = state.orders.slice((selectedPage - 1) * state.pagination.perPage, selectedPage * state.pagination.perPage);
-
+  function paginator(state: IDefaultState = defaultState, selectedPage: number) {
     return Immutable.Map(state)
-      // .set('ordersPaginated', newPaginatedOrders)
-      // .setIn(['pagination', 'current'], selectedPage)
       .updateIn(['pagination'], x => { x.current = selectedPage; return x; })
       .toObject();
-    // return Object.assign({}, state, { ordersPaginated: newPaginatedOrders });
+         // return Object.assign({}, state, { ordersPaginated: newPaginatedOrders });
   };
 
   function search(state: IDefaultState, action: ISearchOrders) {
@@ -72,9 +67,10 @@ module State {
   export function reducer(state: IDefaultState = defaultState, action: StandardAction) {
     switch (action.type) {
       case PAGINATION_SELECT_PAGE:
-        return action.payload.module === 'orders' ? paginator(state, <ISelectPageAction>action) : state;
+        return action.payload.module === 'orders' ? paginator(state, action.payload.page) : state;
       case SEARCH_ORDERS:
-        return search(state, <ISearchOrders> action);
+        //Update state with search action + reset pagination to 1st page
+        return paginator(search(state, <ISearchOrders>action), 1);
       default:
         return state;
     }
