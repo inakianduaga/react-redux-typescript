@@ -1,4 +1,4 @@
-import FrameworkType = require("../../types/FrameworkTypes");
+import * as FrameworkType from "../../types/FrameworkTypes";
 
 module Actions {
 
@@ -26,4 +26,4 @@ module Actions {
 
 }
 
-export = Actions;
+export default Actions;

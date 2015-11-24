@@ -1,4 +1,4 @@
-module IOrder {
+export module IOrder {
 
   export interface Order {
     id: number,
@@ -34,5 +34,3 @@ module IOrder {
   };
 
 }
-
-export = IOrder;

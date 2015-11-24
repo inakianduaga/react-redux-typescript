@@ -1,4 +1,4 @@
-import React = require('react');
+import * as React from 'react';
 import { ReduxConnectedComponent } from '../../types/FrameworkTypes';
 let { connect } = require('react-redux');
 import { Dropdown as LanguageSelector, ILanguage as LanguageItem } from './../languageSelector/LanguageSelector.tsx';

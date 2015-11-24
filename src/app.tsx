@@ -1,7 +1,7 @@
 /// <reference path="../typings/tsd.d.ts" />
 /// <reference path="../node_modules/immutable/dist/immutable.d.ts" />
 
-import React = require('react');
+import * as React from 'react';
 import { createStore, compose, combineReducers } from 'redux';
 import rootReducer from './reducers/index';
 let { Route, Link } = require('react-router');

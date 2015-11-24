@@ -21,4 +21,4 @@ module ILang {
 
 }
 
-export = ILang;
+export default ILang;

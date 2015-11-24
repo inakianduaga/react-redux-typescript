@@ -1,8 +1,8 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 /// <reference path="../../../node_modules/immutable/dist/immutable.d.ts" />
-import React = require('react');
-import Immutable = require('immutable');
-import FrameworkType = require("../../types/FrameworkTypes");
+import * as React from 'react';
+import * as Immutable from 'immutable';
+import * as FrameworkType from "../../types/FrameworkTypes";
 
 //Stylesheets
 require('./../../public/stylesheets/pagination.less');
@@ -94,4 +94,4 @@ module Pagination {
 
 }
 
-export = Pagination;
+export default Pagination;

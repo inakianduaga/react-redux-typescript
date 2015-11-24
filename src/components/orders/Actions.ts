@@ -1,10 +1,10 @@
-import FrameworkType = require("../../types/FrameworkTypes");
+import { Action } from "../../types/FrameworkTypes";
 
 module Actions {
 
   export const SEARCH_ORDERS: string = 'SEARCH_ORDERS';
 
-  export interface ISearchOrders extends FrameworkType.Action {
+  export interface ISearchOrders extends Action {
     payload: {
       input: string,
     }
@@ -24,4 +24,4 @@ module Actions {
 
 }
 
-export = Actions;
+export default Actions;

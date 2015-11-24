@@ -1,13 +1,13 @@
-import React = require('react');
-import Pagination = require('../pagination/Pagination.tsx');
+import * as React from 'react';
+import * as Pagination from '../pagination/Pagination.tsx';
 import { Actions as PaginationActions } from '../pagination/Actions';
 import { Actions as OrderActions } from './Actions.ts';
 import { ReduxConnectedComponent } from '../../types/FrameworkTypes';
 let { connect } = require('react-redux');
-import Immutable = require('immutable');
-import OrderTable = require('./OrdersTable.tsx');
+import * as Immutable from 'immutable';
+import * as OrderTable from './OrdersTable.tsx';
 import { IDefaultState as IOrdersState } from '../orders/State';
-import IOrder = require('./IOrder');
+import * as IOrder from './IOrder';
 import { Languages as Translations } from './lang/Lang';
 import { ILanguage as ITranslation} from './lang/ILang';
 import { Layout as Search } from './Search.tsx';

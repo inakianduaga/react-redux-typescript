@@ -1,7 +1,7 @@
-import Immutable = require('immutable');
-import IOrder = require('./IOrder');
-import OrderTable = require('./OrdersTable');
-import Pagination = require('../pagination/Pagination');
+import * as Immutable from 'immutable';
+import * as IOrder from './IOrder';
+import * as OrderTable from './OrdersTable';
+import * as Pagination from '../pagination/Pagination';
 import {PAGINATION_SELECT_PAGE, ISelectPage as ISelectPageAction} from '../pagination/Actions';
 import {SEARCH_ORDERS, ISearchOrders } from './Actions';
 import {Action as StandardAction} from '../../types/FrameworkTypes';
@@ -77,4 +77,4 @@ module State {
   };
 }
 
-export = State;
+export default State;

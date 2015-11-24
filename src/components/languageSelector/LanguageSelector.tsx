@@ -1,4 +1,4 @@
-import React = require('react');
+import * React from 'react';
 let DropDownMenu = require('material-ui/lib/drop-down-menu');
 
 module LanguageSelector {

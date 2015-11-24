@@ -3,7 +3,7 @@
         "module": "commonjs",
         "sourceMap": true,
         "jsx": "react",
-        "target": "ES5",
+        "target": "ES6",
         "experimentalDecorators": true
     },
     "filesGlob": [

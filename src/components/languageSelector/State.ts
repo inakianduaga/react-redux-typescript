@@ -21,7 +21,7 @@ module State {
         return state;
     }
   };
-  
+
 }
 
-export = State;
+export default State;

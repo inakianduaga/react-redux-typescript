@@ -1,10 +1,10 @@
-import FrameworkType = require("../../types/FrameworkTypes");
+import { Action } from "../../types/FrameworkTypes";
 
 module Actions {
 
   export const LANGUAGE_SELECT: string = 'LANGUAGE_SELECT';
 
-  export interface ISelectLanguage extends FrameworkType.Action {
+  export interface ISelectLanguage extends Action {
     payload: {
       language: string
     }
@@ -24,4 +24,4 @@ module Actions {
 
 }
 
-export = Actions;
+export default Actions;

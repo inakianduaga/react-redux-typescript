@@ -1,8 +1,8 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 /// <reference path="../../../node_modules/immutable/dist/immutable.d.ts" />
-import React = require('react');
-import IOrder = require('./IOrder');
-import Immutable = require('immutable');
+import * as React from 'react';
+import * as IOrder from './IOrder';
+import * as Immutable from 'immutable';
 import { ILanguage as IOrderLanguage } from './lang/ILang';
 
 let M = require('material-ui/lib/table');
@@ -125,4 +125,4 @@ module OrdersTable {
 
 }
 
-export = OrdersTable;
+export default OrdersTable;

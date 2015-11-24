@@ -20,4 +20,4 @@ module FrameworkTypes {
 
 }
 
-export = FrameworkTypes;
+export default FrameworkTypes;

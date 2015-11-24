@@ -25,7 +25,7 @@ module.exports = {
     loaders: [
       {
         test: /\.ts(x)?$/,
-        loaders: ['react-hot', 'ts-loader'],
+        loaders: ['react-hot', 'babel-loader', 'ts-loader'],
         // include: path.join(__dirname, 'scr')
       },
       {
